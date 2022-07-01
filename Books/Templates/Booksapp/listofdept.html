@@ -1,0 +1,31 @@
+{% extends 'Booksapp/index.html' %}
+{% block content %}
+<div class="jumbotron text-center">
+    <h1>The Largest Library in the Midle East</h1>
+    <p>You Can find Any  Book </p>
+</div>
+<div class="container">
+    <div class="row">
+        {% for dept in departments %}
+
+            <div class="col-sm-4">
+                
+                <h4><a href="{% url 'display_department' dept.pk %}">
+                    {{dept.code}} {{dept.name}}
+                </a>
+                </h4>
+                <hr class="my-4">
+                <h6 class="text-muted">{{dept.dept_date}} </h6>
+                <p>{{dept.description}}</p>
+
+            </div>
+        {% endfor %}
+
+    </div>
+</div>
+<div class="container">
+    <a href="{% url 'add_new_dept' %}" class="btn btn-danger">
+        Add New Department
+    </a>
+</div>
+{% endblock %} 
